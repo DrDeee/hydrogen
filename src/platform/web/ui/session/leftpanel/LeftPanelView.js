@@ -1,0 +1,101 @@
+/*
+Copyright 2020 Bruno Windels <bruno@windels.cloud>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
+
+import {ListView} from "../../general/ListView.js";
+import {TemplateView} from "../../general/TemplateView.js";
+import {RoomTileView} from "./RoomTileView.js";
+import {InviteTileView} from "./InviteTileView.js";
+
+class FilterField extends TemplateView {
+    render(t, options) {
+        const clear = () => {
+            filterInput.value = "";
+            filterInput.blur();
+            clearButton.blur();
+            options.clear();
+        };
+        const filterInput = t.input({
+            type: "text",
+            placeholder: options?.label,
+            "aria-label": options?.label,
+            autocomplete: options?.autocomplete,
+            enterkeyhint: 'search',
+            name: options?.name,
+            onInput: event => options.set(event.target.value),
+            onKeydown: event => {
+                if (event.key === "Escape" || event.key === "Esc") {
+                    clear();
+                }
+            },
+            onFocus: () => filterInput.select()
+        });
+        const clearButton = t.button({
+            onClick: clear,
+            title: options.i18n`Clear`,
+            "aria-label": options.i18n`Clear`
+        });
+        return t.div({className: "FilterField"}, [filterInput, clearButton]);
+    }
+}
+
+export class LeftPanelView extends TemplateView {
+    render(t, vm) {
+        const gridButtonLabel = vm => {
+            return vm.gridEnabled ?
+                vm.i18n`Show single room` :
+                vm.i18n`Enable grid layout`;
+        };
+        const utilitiesRow = t.div({className: "utilities"}, [
+            t.a({className: "button-utility close-session", href: vm.closeUrl, "aria-label": vm.i18n`Back to account list`, title: vm.i18n`Back to account list`}),
+            t.view(new FilterField({
+                i18n: vm.i18n,
+                label: vm.i18n`Filter rooms…`,
+                name: "room-filter",
+                autocomplete: true,
+                set: query => vm.setFilter(query),
+                clear: () => vm.clearFilter()
+            })),
+            t.button({
+                onClick: () => vm.toggleGrid(),
+                className: {
+                    "button-utility": true,
+                    grid: true,
+                    on: vm => vm.gridEnabled
+                },
+                title: gridButtonLabel,
+                "aria-label": gridButtonLabel
+            }),
+            t.a({className: "button-utility settings", href: vm.settingsUrl, "aria-label": vm.i18n`Settings`, title: vm.i18n`Settings`}),
+        ]);
+
+        return t.div({className: "LeftPanel"}, [
+            utilitiesRow,
+            t.view(new ListView(
+                {
+                    className: "RoomList",
+                    list: vm.tileViewModels,
+                },
+                tileVM => {
+                    if (tileVM.kind === "invite") {
+                        return new InviteTileView(tileVM);
+                    } else {
+                        return new RoomTileView(tileVM);
+                    }
+                }
+            ))
+        ]);
+    }
+}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/themes/element/theme.css">
+	</head>
+	<body class="not-ie11">
+        <script type="text/javascript">
+            function vm(o) {
+                // fake EventEmitter
+                o.on = () => {};
+                o.off = () => {};
+                o.i18n = (parts, ...expr) => {
+                    let result = "";
+                    for (let i = 0; i < parts.length; ++i) {
+                        result = result + parts[i];
+                        if (i < expr.length) {
+                            result = result + expr[i];
+                        }
+                    }
+                    return result;
+                };
+                return o;
+            }
+        </script>
+        <h1>View Gallery</h1>
+        <h2 name="session-status">Session Status Bar</h2>
+        <div id="session-status" class="hydrogen"></div>
+        <script id="main" type="module">
+            import {SessionStatusView} from "./session/SessionStatusView.js";
+            const view = new SessionStatusView(vm({
+                isShown: true,
+                statusLabel: "Doing something something",
+                isWaiting: true,
+                isConnectNowShown: true,
+                connectNow: () => alert("connecting now")
+            }));
+            document.getElementById("session-status").appendChild(view.mount());
+        </script>
+        <h2 name="login">Login</h2>
+        <div id="login" class="hydrogen"></div>
+        <script id="main" type="module">
+            import {LoginView} from "./login/LoginView.js";
+            const view = new LoginView(vm({
+                defaultHomeServer: "https://hs.tld",
+                login: () => alert("Logging in!"),
+                cancelUrl: "#/session"
+            }));
+            document.getElementById("login").appendChild(view.mount());
+        </script>
+        <h2 name="login-loading">Login Loading</h2>
+        <div id="login-loading" class="hydrogen"></div>
+		<script id="main" type="module">
+			import {LoginView} from "./login/LoginView.js";
+            const view = new LoginView(vm({
+                isBusy: true,
+                loadViewModel: vm({
+                    loadLabel: "Doing something important...",
+                    loading: true,
+                }),
+                cancelUrl: "#/session",
+                defaultHomeServer: "https://hs.tld",
+            }));
+            document.getElementById("login-loading").appendChild(view.mount());
+		</script>
+        <h2 name="session-loading">Session Loading</h2>
+        <div id="session-loading" class="hydrogen"></div>
+        <script id="main" type="module">
+            import {SessionLoadView} from "./login/SessionLoadView.js";
+            const view = new SessionLoadView(vm({
+                loading: true,
+                loadLabel: "Getting on with loading your session..."
+            }));
+            document.getElementById("session-loading").appendChild(view.mount());
+        </script>
+        <h2 name="invite-dm-view">Invite DM view</h2>
+        <div id="invite-dm-view" style="height: 600px" class="hydrogen"></div>
+        <script id="main" type="module">
+            import {InviteView} from "./session/room/InviteView.js";
+            const view = new InviteView(vm({
+                busy: false,
+                name: "Alice",
+                avatarTitle: "Alice",
+                avatarColorNumber: 5,
+                avatarLetter: "A",
+                error: "",
+                inviter: {
+                    id: "@alice:hs.tld",
+                    displayName: "Alice",
+                    name: "Alice",
+                    avatarTitle: "Alice",
+                    avatarColorNumber: 5,
+                    avatarLetter: "A",
+                },
+                isDirectMessage: true,
+                showDMProfile: true,
+            }));
+            document.getElementById("invite-dm-view").appendChild(view.mount());
+        </script>
+        <h2 name="invite-room-view">Invite Room view</h2>
+        <div id="invite-room-view" style="height: 600px" class="hydrogen"></div>
+        <script id="main" type="module">
+            import {InviteView} from "./session/room/InviteView.js";
+            const view = new InviteView(vm({
+                busy: false,
+                name: "Some Room",
+                avatarTitle: "Some Room",
+                avatarColorNumber: 2,
+                avatarLetter: "S",
+                error: "",
+                inviter: {
+                    id: "@alice:hs.tld",
+                    displayName: "Alice",
+                    name: "Alice",
+                    avatarTitle: "Alice",
+                    avatarColorNumber: 5,
+                    avatarLetter: "A",
+                },
+                roomDescription: "#some-room:hs.tld - public room",
+                isDirectMessage: false,
+                showDMProfile: false,
+            }));
+            document.getElementById("invite-room-view").appendChild(view.mount());
+        </script>
+	</body>
+</html>
