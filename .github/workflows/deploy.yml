@@ -1,0 +1,21 @@
+name: Deploy to GitHub Pages
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    deploy:
+        name: Deployment
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Build with yarn
+              run: |
+                  yarn install
+                  RIOT_OG_IMAGE_URL="themes/element/img/logos/element-logo.svg" yarn dist
+            - uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./
