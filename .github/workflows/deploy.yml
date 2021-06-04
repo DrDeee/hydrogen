@@ -12,9 +12,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v2
             - name: Build with yarn
-              run: |
-                  yarn install
-                  RIOT_OG_IMAGE_URL="themes/element/img/logos/element-logo.svg" yarn dist
+              run: yarn install
             - uses: peaceiris/actions-gh-pages@v3
               with:
                   github_token: ${{ secrets.GITHUB_TOKEN }}
