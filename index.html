@@ -1,41 +1,28 @@
-<!DOCTYPE html>
-<html>
-    <head>
+<!DOCTYPE html><html><head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no">
-        <meta name="application-name" content="Hydrogen Chat"/>
+        <meta name="application-name" content="Hydrogen Chat">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-status-bar-style" content="black">
         <meta name="apple-mobile-web-app-title" content="Hydrogen Chat">
         <meta name="description" content="A matrix chat application">
-        <link rel="apple-touch-icon" href="assets/icon-maskable.png">
-        <link rel="stylesheet" type="text/css" href="src/platform/web/ui/css/main.css">
-        <link rel="stylesheet" type="text/css" href="src/platform/web/ui/css/themes/element/theme.css" title="Element Theme">
-        <link rel="alternate stylesheet" type="text/css" href="src/platform/web/ui/css/themes/bubbles/theme.css" title="Bubbles Theme">
-    </head>
+        <link rel="apple-touch-icon" href="icon-maskable-317721575.png">
+        <link rel="stylesheet" type="text/css" href="hydrogen-2144344592.css">
+        <link rel="stylesheet" type="text/css" href="themes/element/bundle-1614962928.css" title="Element Theme">
+        <link rel="alternate stylesheet" type="text/css" href="themes/bubbles/bundle-1494402621.css" title="Bubbles Theme">
+    <link rel="manifest" href="manifest-1157650900.json"></head>
     <body class="hydrogen">
-        <script id="version" type="disabled">
-            window.HYDROGEN_VERSION = "%%VERSION%%";
-            window.HYDROGEN_GLOBAL_HASH = "%%GLOBAL_HASH%%";
-        </script>
-        <script id="main" type="module">
-            import {main} from "./src/main.js";
-            import {Platform} from "./src/platform/web/Platform.js";
-            main(new Platform(document.body, {
-                worker: "src/worker.js",
-                downloadSandbox: "assets/download-sandbox.html",
-                defaultHomeServer: "matrix.org",
-                // NOTE: uncomment this if you want the service worker for local development
-                // serviceWorker: "sw.js",
-                // NOTE: provide push config if you want push notifs for local development
-                //       see assets/config.json for what the config looks like
-                // push: {...},
-                olm: {
-                    wasm: "lib/olm/olm.wasm",
-                    legacyBundle: "lib/olm/olm_legacy.js",
-                    wasmBundle: "lib/olm/olm.js",
-                }
-            }, null, {development: true}));
-        </script>
-    </body>
-</html>
+        <script id="version" type="text/javascript">// @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt Apache-2.0
+
+            window.HYDROGEN_VERSION = "0.1.56";
+            window.HYDROGEN_GLOBAL_HASH = "1162928887";
+        
+// @license-end</script>
+        <script type="module">// @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt Apache-2.0
+import {main, Platform} from "./hydrogen-2241212789.js"; main(new Platform(document.body, {"push":{"appId":"io.element.hydrogen.web","gatewayUrl":"https://matrix.org","applicationServerKey":"BC-gpSdVHEXhvHSHS0AzzWrQoukv2BE7KzpoPO_FfPacqOo3l1pdqz7rSgmB04pZCWaHPz7XRe6fjLaC-WPDopM"},"defaultHomeServer":"matrix.org","worker":"worker-1875889242.js","downloadSandbox":"download-sandbox-3001206039.html","serviceWorker":"sw.js","olm":{"wasm":"olm-4289088762.wasm","legacyBundle":"olm_legacy-3232457086.js","wasmBundle":"olm-1421970081.js"}}));
+// @license-end</script><script type="text/javascript" nomodule src="hydrogen-legacy-1015056754.js"></script><script type="text/javascript" nomodule>// @license magnet:?xt=urn:btih:8e4f440f4c65981c5bf93c76d35135ba5064d8b7&dn=apache-2.0.txt Apache-2.0
+hydrogen.main(new hydrogen.Platform(document.body, {"push":{"appId":"io.element.hydrogen.web","gatewayUrl":"https://matrix.org","applicationServerKey":"BC-gpSdVHEXhvHSHS0AzzWrQoukv2BE7KzpoPO_FfPacqOo3l1pdqz7rSgmB04pZCWaHPz7XRe6fjLaC-WPDopM"},"defaultHomeServer":"matrix.org","worker":"worker-1875889242.js","downloadSandbox":"download-sandbox-3001206039.html","serviceWorker":"sw.js","olm":{"wasm":"olm-4289088762.wasm","legacyBundle":"olm_legacy-3232457086.js","wasmBundle":"olm-1421970081.js"}}));
+// @license-end</script>
+    
+
+</body></html>

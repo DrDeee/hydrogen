@@ -15,12 +15,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-const VERSION = "%%VERSION%%";
-const GLOBAL_HASH = "%%GLOBAL_HASH%%";
-const UNHASHED_PRECACHED_ASSETS = [];
-const HASHED_PRECACHED_ASSETS = [];
-const HASHED_CACHED_ON_REQUEST_ASSETS = [];
-const NOTIFICATION_BADGE_ICON = "assets/icon.png";
+const VERSION = "0.1.56";
+const GLOBAL_HASH = "1162928887";
+const UNHASHED_PRECACHED_ASSETS = ["index.html"];
+const HASHED_PRECACHED_ASSETS = ["olm-1421970081.js","olm-4289088762.wasm","hydrogen-2241212789.js","download-sandbox-3001206039.html","themes/element/element-logo-2959259787.svg","themes/element/icons/chevron-left-1539668473.svg","themes/element/icons/chevron-right-787082136.svg","themes/element/icons/clear-2843548839.svg","themes/element/icons/disable-grid-2157868734.svg","themes/element/icons/dismiss-1031249481.svg","themes/element/icons/enable-grid-3565802253.svg","themes/element/icons/paperclip-503625323.svg","themes/element/icons/search-1193336244.svg","themes/element/icons/send-4065347741.svg","themes/element/icons/settings-3021269543.svg","themes/element/icons/vertical-ellipsis-1297943143.svg","hydrogen-2144344592.css","themes/element/bundle-1614962928.css","themes/bubbles/bundle-1494402621.css","icon-2793984973.png","icon-maskable-317721575.png"];
+const HASHED_CACHED_ON_REQUEST_ASSETS = ["olm_legacy-3232457086.js","hydrogen-legacy-1015056754.js","worker-1875889242.js","themes/element/inter/Inter-Black-276207522.woff","themes/element/inter/Inter-Black-3721205557.woff2","themes/element/inter/Inter-BlackItalic-3159247813.woff","themes/element/inter/Inter-BlackItalic-3355577873.woff2","themes/element/inter/Inter-Bold-4187626158.woff","themes/element/inter/Inter-Bold-1381170295.woff2","themes/element/inter/Inter-BoldItalic-641187949.woff","themes/element/inter/Inter-BoldItalic-4000810957.woff2","themes/element/inter/Inter-ExtraBold-3888913940.woff","themes/element/inter/Inter-ExtraBold-2973547570.woff2","themes/element/inter/Inter-ExtraBoldItalic-2880676406.woff","themes/element/inter/Inter-ExtraBoldItalic-4023252294.woff2","themes/element/inter/Inter-ExtraLight-3277895962.woff","themes/element/inter/Inter-ExtraLight-3116834956.woff2","themes/element/inter/Inter-ExtraLightItalic-3022762143.woff","themes/element/inter/Inter-ExtraLightItalic-542652406.woff2","themes/element/inter/Inter-Italic-4024721388.woff","themes/element/inter/Inter-Italic-2832519998.woff2","themes/element/inter/Inter-Light-3990448997.woff","themes/element/inter/Inter-Light-3879803958.woff2","themes/element/inter/Inter-LightItalic-412813693.woff","themes/element/inter/Inter-LightItalic-1187583345.woff2","themes/element/inter/Inter-Medium-2285329551.woff","themes/element/inter/Inter-Medium-1918055220.woff2","themes/element/inter/Inter-MediumItalic-1722521156.woff","themes/element/inter/Inter-MediumItalic-2244299954.woff2","themes/element/inter/Inter-Regular-2779214592.woff","themes/element/inter/Inter-Regular-441590695.woff2","themes/element/inter/Inter-SemiBold-1906312195.woff","themes/element/inter/Inter-SemiBold-2507251795.woff2","themes/element/inter/Inter-SemiBoldItalic-3778207334.woff","themes/element/inter/Inter-SemiBoldItalic-152029837.woff2","themes/element/inter/Inter-Thin-1593561269.woff","themes/element/inter/Inter-Thin-1469368522.woff2","themes/element/inter/Inter-ThinItalic-1888295987.woff","themes/element/inter/Inter-ThinItalic-173059207.woff2","manifest-1157650900.json"];
+const NOTIFICATION_BADGE_ICON = "icon-2793984973.png";
 const unhashedCacheName = `hydrogen-assets-${GLOBAL_HASH}`;
 const hashedCacheName = `hydrogen-assets`;
 const mediaThumbnailCacheName = `hydrogen-media-thumbnails-v2`;
